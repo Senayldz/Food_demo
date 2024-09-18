@@ -29,5 +29,4 @@ Bu talimatlar, projenizi yerel bir makinede çalıştırmak ve geliştirme için
 - cd frontend
 - npm start
 
-Tarayıcınızda http://localhost:3000 adresine gidin.
 
