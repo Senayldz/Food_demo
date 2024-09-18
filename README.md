@@ -13,20 +13,20 @@ Bu talimatlar, projenizi yerel bir makinede çalıştırmak ve geliştirme için
 
 ## Kurulum 
 ### Backend Kurulumu
-- cd backend
+- cd server
 - npm install
 
 ### Frontend Kurulumu
-- cd frontend
+- cd client
 - npm install
 
 ## Çalıştırma
 ### Backend’i Çalıştırma
-- cd backend
+- cd server
 - npm start
 
 ### Frontend’i Çalıştırma
-- cd frontend
-- npm start
+- cd client
+- npm run dev
 
 
