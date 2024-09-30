@@ -1,8 +1,8 @@
 import React from "react";
 
 const serviceLists = [
-    {id:1, title: "Catering", des: "Delight your guests with our flavors and  presentation", img: "/images/home/services/icon1.png"},
-    {id:2, title: "Fast delivery", des: "We deliver your order promptly to your door", img: "/images/home/services/icon2.png"},
+    {id:1, title: "İkram", des: "Misafirlerinizi lezzetlerimiz ve sunumlarımızla şımartın.", img: "/images/home/services/icon1.png"},
+    {id:2, title: "Hızlı Teslimat", des: "Siparişinizi kapınıza zamanında teslim ediyoruz", img: "/images/home/services/icon2.png"},
 ]
 
 const OurServices = () => {
@@ -11,12 +11,12 @@ const OurServices = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         <div className="md:w-1/2">
           <div className="text-left md:w-4/5">
-            <p className="subtitle">Our Story & Services</p>
-            <h2 className="title">Our Culinary Journey And Services</h2>
+            <p className="subtitle">Hikayemiz ve Hizmetlerimiz</p>
+            <h2 className="title">Gastronomi Yolculuğumuz ve Hizmetlerimiz</h2>
 
 
             <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
-              Explore
+              Keşfet
             </button>
           </div>
         </div>

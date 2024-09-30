@@ -1,18 +1,18 @@
 import React from 'react'
 
 const categoryItems = [
-    { id: 1, title: "Main Dish", despriction: "(86 dishes)", image: "/images/home/category/img1.png" },
-    { id: 2, title: "Break Fast", despriction: "(12 break fast)", image: "/images/home/category/img2.png" },
-    { id: 3, title: "Dessert", despriction: "(48 dessert)", image: "/images/home/category/img3.png" },
-    { id: 4, title: "Browse All", despriction: "(255 Items)", image: "/images/home/category/img4.png" }
+    { id: 1, title: "Ana Yemek", despriction: "(86 yemek)", image: "/images/home/category/img1.png" },
+    { id: 2, title: "Kahvaltı", despriction: "(12 kahvaltı)", image: "/images/home/category/img2.png" },
+    { id: 3, title: "Tatlı", despriction: "(48 tatlı)", image: "/images/home/category/img3.png" },
+    { id: 4, title: "Tümünü İncele", despriction: "(255 çeşit)", image: "/images/home/category/img4.png" }
 ]
 
 const Catagories = () => {
     return (
         <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4 py-16'>
             <div className='text-center'>
-                <p className='subtitle'>Customer Favorites</p>
-                <h2 className='title'>Popular Catagories</h2>
+                <p className='subtitle'>Müşteri Favorleri</p>
+                <h2 className='title'>Popüler Kategoriler</h2>
             </div>
 
             {/* category cards */}

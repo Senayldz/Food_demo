@@ -11,7 +11,7 @@ const Menu = () => {
   const [itemsPerPage] = useState(8); 
 
   useEffect(() => {
-    // Fetch data from the backend
+    // Verileri backend'den çek
     const fetchData = async () => {
       try {
         const response = await fetch("menu.json");
@@ -19,7 +19,7 @@ const Menu = () => {
         setMenu(data);
         setFilteredItems(data); 
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Veri çekme hatası:", error);
       }
     };
 
@@ -46,7 +46,7 @@ const Menu = () => {
   const handleSortChange = (option) => {
     setSortOption(option);
 
-    // Logic for sorting based on the selected option
+    // Seçilen seçeneğe göre sıralama işlemi
     let sortedItems = [...filteredItems];
 
     switch (option) {
@@ -57,7 +57,7 @@ const Menu = () => {
         sortedItems.sort((a, b) => b.price - a.price);
         break;
       default:
-        // Do nothing for the "default" case
+        // "default" durumu için hiçbir şey yapma
         break;
     }
 
@@ -65,13 +65,11 @@ const Menu = () => {
     setCurrentPage(1);
   };
 
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
   return (
     <div>
@@ -79,7 +77,7 @@ const Menu = () => {
         <div className="py-48 flex flex-col items-center justify-center">
           <div className=" text-center px-4 space-y-7">
             <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
-              Chef's Specials <span className="text-green">Food</span>
+              Şefin Özel  <span className="text-green">Yemekleri</span>
             </h2>
           </div>
         </div>
@@ -93,13 +91,13 @@ const Menu = () => {
               onClick={showAll}
               className={selectedCategory === "all" ? "active" : ""}
             >
-              All
+              Hepsi
             </button>
             <button
               onClick={() => filterItems("salad")}
               className={selectedCategory === "salad" ? "active" : ""}
             >
-              Salad
+              Salata
             </button>
             <button
               onClick={() => filterItems("pizza")}
@@ -111,19 +109,19 @@ const Menu = () => {
               onClick={() => filterItems("soup")}
               className={selectedCategory === "soup" ? "active" : ""}
             >
-              Soups
+              Çorbalar
             </button>
             <button
               onClick={() => filterItems("dessert")}
               className={selectedCategory === "dessert" ? "active" : ""}
             >
-              Desserts
+              Tatlılar
             </button>
             <button
               onClick={() => filterItems("drinks")}
               className={selectedCategory === "drinks" ? "active" : ""}
             >
-              Drinks
+              İçecekler
             </button>
           </div>
 
@@ -137,9 +135,9 @@ const Menu = () => {
               value={sortOption}
               className="bg-black text-white px-2 py-1 rounded-sm"
             >
-              <option value="default"> Default</option>
-              <option value="low-to-high">Low to High</option>
-              <option value="high-to-low">High to Low</option>
+              <option value="default">Varsayılan</option>
+              <option value="low-to-high">Düşükten Yükseğe</option>
+              <option value="high-to-low">Yüksekten Düşüğe</option>
             </select>
           </div>
         </div>
@@ -151,7 +149,7 @@ const Menu = () => {
         </div>
       </div>
 
-       <div className="flex justify-center my-8 flex-wrap gap-2">
+      <div className="flex justify-center my-8 flex-wrap gap-2">
         {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
           <button
             key={index + 1}

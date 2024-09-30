@@ -7,84 +7,75 @@ import { Link } from 'react-router-dom';
 import useCart from "../hooks/useCart";
 
 const Navbar = () => {
-  const [isSticky, setSticky] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const { user } = useContext(AuthContext);
-  const [cart, refetch] = useCart();
+  const [cart, refetchCart] = useCart();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 0) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
+    const handleScrollEvent = () => {
+      setIsSticky(window.scrollY > 0);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollEvent);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollEvent);
     };
   }, []);
 
-  const navItems = (
+  const navLinks = (
     <>
       <li>
-        <a href="/">Home</a>
+        <a href="/">Anasayfa</a>
       </li>
       <li tabIndex={0}>
         <details>
-          <summary>Menu</summary>
+          <summary>Menü</summary>
           <ul className="p-2 text-black">
             <li>
-              <a href="/menu">All</a>
+              <a href="/menu">Tümü</a>
             </li>
             <li>
-              <a>Salad</a>
+              <a href="#">Salata</a>
             </li>
             <li>
-              <a>Pizza</a>
+              <a href="#">Pizza</a>
             </li>
           </ul>
         </details>
       </li>
       <li tabIndex={0}>
         <details>
-          <summary>Services</summary>
+          <summary>Hizmetler</summary>
           <ul className="p-2 text-black">
             <li>
-              <a>Online Order</a>
+              <a href="#">Online Sipariş</a>
             </li>
             <li>
-              <a>Table Booking</a>
+              <a href="#">Masa Rezervasyonu</a>
             </li>
             <li>
-              <a>Order Tracking</a>
+              <a href="#">Sipariş Takibi</a>
             </li>
           </ul>
         </details>
       </li>
       <li>
-        <a>Offers</a>
+        <a href="#">Kampanyalar</a>
       </li>
     </>
   );
 
   return (
-    <header
-      className={`max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
-    >
+    <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
       <div
-        className={`navbar xl:px-24 text-white ${isSticky
-          ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out bg-drkGreen"
-          : ""
+        className={`navbar xl:px-24 text-white ${isSticky ? "shadow-md bg-base-100 bg-drkGreen transition-all duration-300 ease-in-out" : ""
           }`}
       >
         <div className="navbar-start">
           <div className="dropdown justify-between">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <button tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -99,12 +90,12 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </label>
+            </button>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64 space-y-3"
             >
-              {navItems}
+              {navLinks}
             </ul>
           </div>
           <a href="/">
@@ -112,7 +103,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navItems}</ul>
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle hidden lg:flex">
@@ -133,7 +124,7 @@ const Navbar = () => {
           </button>
 
           <Link to="cart-page">
-            <label
+            <div
               tabIndex={0}
               className="btn btn-ghost btn-circle hidden lg:flex items-center justify-center mr-3"
             >
@@ -154,10 +145,10 @@ const Navbar = () => {
                 </svg>
                 <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
               </div>
-            </label>
+            </div>
           </Link>
 
-          {/* login btn */}
+          {/* Giriş butonu */}
           {user ? (
             <Profile user={user} />
           ) : (
@@ -165,7 +156,7 @@ const Navbar = () => {
               onClick={() => document.getElementById("my_modal_5").showModal()}
               className="btn flex items-center gap-2 rounded-full px-6 bg-green text-white"
             >
-              <FaRegUser /> Login
+              <FaRegUser /> Giriş Yap
             </button>
           )}
 

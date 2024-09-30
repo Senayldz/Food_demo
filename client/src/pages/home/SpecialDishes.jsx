@@ -14,7 +14,7 @@ const SampleNextArrow = (props) => {
       style={{ ...style, display: "block", background: "red" }}
       onClick={onClick}
     >
-      NEXT
+      İLERİ
     </div>
   );
 };
@@ -27,7 +27,7 @@ const SamplePrevArrow = (props) => {
       style={{ ...style, display: "block", background: "green" }}
       onClick={onClick}
     >
-      BACK
+      GERİ
     </div>
   );
 };
@@ -40,11 +40,11 @@ const SpecialDishes = () => {
     fetch("http://localhost:6001/menu")
       .then((res) => res.json())
       .then((data) => {
-        const specials = data.filter((item) => item.category === "popular");
-        // console.log(specials)
+        const specials = data.filter((item) => item.category === "popüler");
         setRecipes(specials);
       });
   }, []);
+  
   const settings = {
     dots: true,
     infinite: false,
@@ -78,15 +78,15 @@ const SpecialDishes = () => {
         },
       },
     ],
-
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 my-20 relative">
       <div className='text-left'>
-        <p className='subtitle'>Customer Favorites</p>
-        <h2 className='title'>Popular Catagories</h2>
+        <p className='subtitle'>Müşteri Favorileri</p>
+        <h2 className='title'>Popüler Kategoriler</h2>
       </div>
       <div className="md:absolute right-3 top-8 mb-10 md:mr-24">
         <button onClick={() => slider?.current?.slickPrev()}

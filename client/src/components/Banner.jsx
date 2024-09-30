@@ -12,10 +12,10 @@ const Banner = () => {
         {/* texts */}
         <div className="md:w-1/2 px-8 space-y-7 text-white bg-opacity-50 rounded-lg md:ml-16 md:mt-16">
           <h2 className="md:text-8xl text-5xl font-bold md:leading-snug leading-snug">
-            Freshness in every <span className="text-green">Bite</span>
+            Her Lokmada <span className="text-green">Lezzet</span>
           </h2>
           <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
-            Order Now
+            Hemen Sipariş Et
           </button>
         </div>
 

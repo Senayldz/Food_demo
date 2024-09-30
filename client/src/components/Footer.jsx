@@ -7,34 +7,34 @@ const Footer = () => {
                 <aside>
                     <p className="text-2xl">Logo</p>
                     <p className="my-3 md:w-40">
-                        Savor the artistry where every dish is a culinary masterpiece
+                        Her tabakta sanatın ve lezzetin birleştiği nokta
                     </p>
                 </aside>
                 <nav>
-                    <header className="footer-title text-black">Useful links</header>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Events</a>
-                    <a className="link link-hover">Blogs</a>
-                    <a className="link link-hover">FAQ</a>
+                    <header className="footer-title text-black">Faydalı Bağlantılar</header>
+                    <a className="link link-hover">Hakkımızda</a>
+                    <a className="link link-hover">Etkinlikler</a>
+                    <a className="link link-hover">Bloglar</a>
+                    <a className="link link-hover">Sıkça Sorulan Sorular</a>
                 </nav>
                 <nav>
-                    <header className="footer-title">Main Menu</header>
-                    <a className="link link-hover">Home</a>
-                    <a className="link link-hover">Offers</a>
-                    <a className="link link-hover">Menus</a>
-                    <a className="link link-hover">Reservation</a>
+                    <header className="footer-title">Ana Menü</header>
+                    <a className="link link-hover">Ana Sayfa</a>
+                    <a className="link link-hover">Teklifler</a>
+                    <a className="link link-hover">Menüler</a>
+                    <a className="link link-hover">Rezervasyon</a>
                 </nav>
                 <nav>
-                    <header className="footer-title">Contact Us</header>
-                    <a className="link link-hover">example@email.com</a>
-                    <a className="link link-hover">+64 958 248 966</a>
-                    <a className="link link-hover">Social media</a>
+                    <header className="footer-title">Bize Ulaşın</header>
+                    <a className="link link-hover">ornek@email.com</a>
+                    <a className="link link-hover">+90 123 456 7890</a>
+                    <a className="link link-hover">Sosyal Medya</a>
                 </nav>
             </footer>
             <hr />
             <footer className="footer items-center xl:px-24 px-4 py-4 mt-2">
                 <aside className="items-center grid-flow-col">
-                    <p>Copyright © 2023 - All right reserved</p>
+                    <p>Telif Hakkı © 2023 - Tüm hakları saklıdır</p>
                 </aside>
                 <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                     <a>

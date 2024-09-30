@@ -33,16 +33,16 @@ const Profile = () => {
           <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             <li>
-              <a href="/update-profile">Profile</a>
+              <a href="/update-profile">Profil</a>
             </li>
             <li>
-              <a>Order</a>
+              <a>Sipariş et</a>
             </li>
             <li>
-              <a>Settings</a>
+              <a>Ayarlar</a>
             </li>
             <li>
-              <button onClick={handleLogout}>Logout</button>
+              <button onClick={handleLogout}>Çıkış yap</button>
             </li>
           </ul>
         </div>

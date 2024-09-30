@@ -1,117 +1,121 @@
 import React, { useContext, useState } from "react";
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthProvider";
 
 const Modal = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-    
-    const {signUpWithGmail, login} = useContext(AuthContext);
-    const [errorMessage, setErrorMessage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    // redirecting to home page or specifig page
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from?.pathname || "/";
-  
+  const { signUpWithGmail, login } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  // Redirect to homepage or specific path
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+  // Handle login form submission
   const onSubmit = (data) => {
-    const email = data.email;
-    const password = data.password;
-    // console.log(email, password)
-    login(email, password).then((result) => {
-      const user = result.user;
-      alert("Login successfull");
-      document.getElementById("my_modal_5").close()
-      navigate(from, {replace: true})
-    }).catch((error) => {
-      const errorMessage = error.message;
-      setErrorMessage("Provide a correct email and password!")
-    })
+    const { email, password } = data;
+    
+    login(email, password)
+      .then((result) => {
+        alert("Başarıyla giriş yaptınız!");
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
+      })
+      .catch(() => {
+        setErrorMessage("Lütfen geçerli bir e-posta ve şifre girin!");
+      });
   };
 
-    // google signin
-    const handleLogin = () => {
-      signUpWithGmail().then((result) => {
-        const user = result.user;
-        alert("Login successfull!")
-        navigate(from, {replace: true})
-      }).catch((error) => console.log(error))
-    }
+  // Google sign-in
+  const handleGoogleSignIn = () => {
+    signUpWithGmail()
+      .then((result) => {
+        alert("Google ile başarılı bir şekilde giriş yaptınız!");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error("Google giriş hatası:", error));
+  };
+
   return (
     <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
       <div className="modal-box">
         <div className="modal-action flex flex-col justify-center mt-0">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
-            <h3 className="font-bold text-lg">Please Login!</h3>
+            <h3 className="font-bold text-lg">Lütfen Giriş Yapın!</h3>
 
-            {/* email */}
+            {/* Email input */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text">E-posta</span>
               </label>
               <input
                 type="email"
-                placeholder="email"
+                placeholder="E-posta adresinizi girin"
                 className="input input-bordered"
-                {...register("email")}
+                {...register("email", { required: true })}
               />
+              {errors.email && <span className="text-red-500 text-xs">E-posta gerekli</span>}
             </div>
 
-            {/* password */}
+            {/* Password input */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Şifre</span>
               </label>
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Şifrenizi girin"
                 className="input input-bordered"
-                {...register("password")}
+                {...register("password", { required: true })}
               />
+              {errors.password && <span className="text-red-500 text-xs">Şifre gerekli</span>}
               <label className="label mt-1">
                 <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
+                  Şifrenizi mi unuttunuz?
                 </a>
               </label>
             </div>
 
-            {/* error */}
-            {
-              errorMessage ? <p className="text-red text-xs italic">{errorMessage}</p> : ""
-            }
+            {/* Error message */}
+            {errorMessage && <p className="text-red-500 text-xs italic">{errorMessage}</p>}
 
-            {/* login btn */}
+            {/* Submit button */}
             <div className="form-control mt-4">
-              <input
-                type="submit"
-                value="Login"
-                className="btn bg-green text-white"
-              />
+              <input type="submit" value="Giriş Yap" className="btn bg-green text-white" />
             </div>
 
-            <p className="text-center my-2">
-              Donot have an account?{" "}
-              <Link to="/signup" className="underline text-drkGreen ml-1">
-                Signup Now
-              </Link>{" "}
+            {/* Signup link */}
+            <p className="text-center my-2 text-drkGreen">
+              Hesabınız yok mu?{" "}
+              <Link to="/signup" className="underline  ml-1">
+                Kayıt Ol
+              </Link>
             </p>
 
-            <button 
-            htmlFor="my_modal_5"
-            onClick={() => document.getElementById("my_modal_5").close()}
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >✕</button>
+            {/* Close button */}
+            <button
+              htmlFor="my_modal_5"
+              onClick={() => document.getElementById("my_modal_5").close()}
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </button>
           </form>
 
-          {/* social sign in */}
+          {/* Social sign-in */}
           <div className="text-center space-x-3 mb-5">
-            <button className="btn btn-circle hover:bg-green hover:text-white" onClick={handleLogin}>
+            <button
+              className="btn btn-circle hover:bg-green hover:text-white"
+              onClick={handleGoogleSignIn}
+            >
               <FaGoogle />
             </button>
           </div>
